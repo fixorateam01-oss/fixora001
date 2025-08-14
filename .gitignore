@@ -1,0 +1,11 @@
+node_modules/
+.next/
+out/
+dist/
+*.log
+
+# Env files
+.env
+.env.*
+!.env.local.example
+.env.local
