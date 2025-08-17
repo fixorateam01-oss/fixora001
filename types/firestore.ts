@@ -3,25 +3,20 @@ export type UserRole = 'customer' | 'rider' | 'technician' | 'admin'
 export interface UserDoc {
 	uid: string
 	name: string
-	role: UserRole
-	phone?: string
 	email?: string
+	phone?: string
+	role: UserRole
 	address?: string
 	photoURL?: string
+	createdAt?: number
 }
 
 export type OrderStatus =
-	| 'created'
-	| 'pickup_assigned'
-	| 'pickup_in_progress'
-	| 'picked_up'
-	| 'in_repair_queue'
-	| 'repair_in_progress'
-	| 'repaired'
-	| 'delivery_assigned'
-	| 'out_for_delivery'
-	| 'delivered'
-	| 'cancelled'
+	| 'Pending Pickup'
+	| 'Picked Up'
+	| 'In Repair'
+	| 'Ready for Delivery'
+	| 'Delivered'
 
 export interface OrderDoc {
 	id: string
@@ -29,8 +24,8 @@ export interface OrderDoc {
 	deviceType: string
 	brand: string
 	model: string
-	issue: string
-	photos: string[]
+	issueDescription: string
+	issuePhotos: string[]
 	status: OrderStatus
 	pickupAddress: string
 	deliveryAddress: string
@@ -44,11 +39,12 @@ export interface StatusLogDoc {
 	id: string
 	orderId: string
 	status: OrderStatus
-	timestamp: number
 	updatedBy: string
+	proofUrls?: string[]
+	timestamp: number
 }
 
-export interface LocationUpdateDoc {
+export interface LocationDoc {
 	id: string
 	orderId: string
 	riderId: string

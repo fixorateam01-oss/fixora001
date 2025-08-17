@@ -1,3 +1,6 @@
+import dynamic from 'next/dynamic'
+const Map = dynamic(() => import('./Map'), { ssr: false })
+
 interface Props {
 	params: { orderId: string }
 }
@@ -14,8 +17,8 @@ export default function TrackOrderPage({ params }: Props) {
 				</div>
 				{/* Map */}
 				<div>
-					{/* Will be replaced with Google Maps JS API */}
-					<div className="h-80 w-full rounded-lg border border-slate-200 bg-slate-100" />
+					{/* Google Maps JS API live tracker */}
+					<Map orderId={params.orderId} />
 				</div>
 			</div>
 		</main>
